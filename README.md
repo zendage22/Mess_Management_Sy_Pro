@@ -1,0 +1,1 @@
+The Mess Management System is a web-based application developed to streamline daily operations in a student or hostel mess. This project is built using PHP, XAMPP Server (for local hosting and MySQL database), and front-end technologies like HTML, CSS, Bootstrap, and JavaScript.
