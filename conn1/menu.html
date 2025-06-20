@@ -1,0 +1,665 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menu - Mess Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;  /* Smaller brand name */
+            color: #34be65 !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #ff6600 !important;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Menu Styling */
+        .navbar .navbar-nav .nav-link {
+            color: #fff !important;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            background-color: #007bff;
+            border-radius: 30px;
+            color: white !important;
+        }
+
+        .navbar .navbar-nav .nav-link.active {
+            color: #ff6600 !important;
+            font-weight: 600;
+        }
+
+        /* Adding Font Awesome Icons */
+        .navbar .navbar-nav .nav-item i {
+            margin-right: 8px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-item:hover i {
+            transform: scale(1.2);
+            color: #ff6600;
+        }
+
+
+        .container {
+            padding: 60px;
+            margin-top: 80px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4B0082;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .meal-card {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .meal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .meal-card h5 {
+            color: #4B0082;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        .meal-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .dropdown select {
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 2px solid #343a40;
+            background-color: #fff;
+            color: #343a40;
+            transition: border 0.3s ease;
+        }
+
+        .dropdown select:hover {
+            border-color: #ff6600;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer a {
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ff6600;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .meal-card {
+                padding: 15px;
+            }
+        }
+
+
+        .meal-section .row {
+    display: flex;
+    flex-wrap: nowrap;  /* Prevents items from going to next row */
+    justify-content: center;
+}
+
+.meal-card img {
+    width: 100%;
+    max-height: 200px; /* Maintain aspect ratio */
+    object-fit: cover;
+}
+
+.meal-card {
+    text-align: center;
+    max-width: 300px;
+}
+.meal-card {
+    width: 100%; /* Ensures responsiveness */
+    max-width: 300px; /* Set maximum width */
+    height: 300px; /* Set fixed height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meal-card img {
+    width: 100%; /* Image takes full width */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures uniformity */
+    border-radius: 10px;
+}
+
+.meal-card h5 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #4B0082;
+}
+.dropdown-menu {
+            background-color: #343a40;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff;
+            color: #fff !important;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            color: #ff6600;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-item:hover i {
+            color: #fff;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 10px;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-toggle:hover::after {
+            transform: rotate(180deg);
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo and Brand Name -->
+            <a class="navbar-brand" href="#">
+                <img src="logo.png"s alt="Logo" style="height: 60px;"> Mess Management
+            </a>
+            <!-- Navbar Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html"><i class="fas fa-utensils"></i>Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.php"><i class="fas fa-concierge-bell"></i>Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i>About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php"><i class="fas fa-phone-alt"></i>Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-sign-in-alt"></i>Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-user"></i> User Login</a></li>
+                            <li><a class="dropdown-item" href="staff_login.php"><i class="fas fa-users-cog"></i> Staff Login</a></li>
+                            <li><a class="dropdown-item" href="admin_login.php"><i class="fas fa-user-shield"></i> Admin Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Section -->
+    <div class="container">
+        <h2 class="section-title">Day-wise Menu</h2>
+        
+        <!-- Dropdown for Day Selection -->
+        <div class="dropdown">
+            <label for="daySelection">Select Day: </label>
+            <select id="daySelection">
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+            </select>
+        </div>
+
+        <!-- Sections for Breakfast, Lunch, and Dinner -->
+        <div id="breakfast" class="meal-section">
+            <h3 class="section-title">Breakfast</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="breakfast1.jpg" alt="Breakfast 1">
+                        <h5>Scrambled Eggs</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="breakfast2.jpg" alt="Breakfast 2">
+                        <h5>Pancakes</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="breakfast3.jpg" alt="Breakfast 3">
+                        <h5>Toast with Avocado</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lunch" class="meal-section">
+            <h3 class="section-title">Lunch</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="lunch1.jpg" alt="Lunch 1">
+                        <h5>Chicken Salad</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="lunch2.jpg" alt="Lunch 2">
+                        <h5>Pasta Primavera</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="lunch3.jpg" alt="Lunch 3">
+                        <h5>Grilled Fish</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dinner" class="meal-section">
+            <h3 class="section-title">Dinner</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="dinner1.jpg" alt="Dinner 1">
+                        <h5>Steak</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="dinner2.jpg" alt="Dinner 2">
+                        <h5>Chicken Curry</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="meal-card">
+                        <img src="dinner3.jpg" alt="Dinner 3">
+                        <h5>Veggie Stir Fry</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // Day Menu Data (can be modified or extended as per your menu)
+        const dayMenus = {
+            monday: {
+                breakfast: [
+                    { name: "Tea", image: "php_img/t1.png" },
+                    { name: "Chocolate Milk", image: "php_img/m1.jpg" },
+                    { name: "Idli-Sambar", image: "php_img/b1.jpg" }
+                ],
+                lunch: [
+                    { name: "Roti", image: "php_img/l1.jpg" },
+                    { name: "Aalu-Matar", image: "php_img/l11.jpg" },
+                    { name: "Dal-Rice", image: "php_img/l111.jpg" }
+                ],
+                dinner: [
+                    { name: "Bhakari", image: "php_img/d1.jpg" },
+                    { name: "Palak", image: "php_img/d11.jpg" },
+                    { name: "Veg Biryani", image: "php_img/d111.jpg" }
+                ]
+            },
+            tuesday: {
+                breakfast: [
+                    { name: "Coffee", image: "php_img/t2.jpg" },
+                    { name: "Mango Milk", image: "php_img/mango.jpg" },
+                    { name: "Poha", image: "php_img/b2.jpg" }
+                ],
+                lunch: [
+                    { name: "Chapati", image: "php_img/chapati.jpg" },
+                    { name: "fenugreek", image: "php_img/Fenugeek.jpg" },
+                    { name: "Fried Rice", image: "php_img/Fried rice 1.jpg" }
+                ],
+                dinner: [
+                    { name: "Roti", image: "php_img/Roti.jpg" },
+                    { name: "Panner", image: "php_img/Paneer.jpg" },
+                    { name: "Dal-Rice", image: "php_img/Dal rice1.jpg" }
+                ]
+            },
+            wednesday : {
+                breakfast: [
+                    { name: "Tea", image: "php_img/t3.png" },
+                    { name: "Strawberry Milk", image: "php_img/st.jpg" },
+                    { name: "Uttapam", image: "php_img/b3.jpg" }
+                ],
+                lunch: [
+                    { name: "Tandoor Roti", image: "php_img/Tandur_roti1.jpg" },
+                    { name: "Paneer-Tikka", image: "php_img/Paneer Tikka2.jpg" },
+                    { name: "Dal-rice", image: "php_img/Dal rice1.jpg" }
+                ],
+                dinner: [
+                    { name: "Chapati", image: "php_img/chapati.jpg" },
+                    { name: "Cabbage", image: "php_img/Cabbage 1.jpg" },
+                    { name: "Veg Biryani", image: "php_img/veg_biryani2.jpg" }
+                ]
+            },
+            thursday : {
+                breakfast: [
+                    { name: "Coffee", image: "php_img/c2.jpg" },
+                    { name: "Vanilla Milk", image: "php_img/va1.jpg" },
+                    { name: "Upma", image: "php_img/b4.jpg" }
+                ],
+                lunch: [
+                    { name: "Puri", image: "php_img/Poori Recipe2.jpg" },
+                    { name: "Chole", image: "php_img/Chole2.jpg" },
+                    { name: "Pulav", image: "php_img/Pulav2.jpg" }
+                ],
+                dinner: [
+                    { name: "Roti", image: "php_img/Roti.jpg" },
+                    { name: "LadyFinger", image: "php_img/ladyfinger2.jpg" },
+                    { name: "Dal-Khichadi", image: "php_img/Dal_khichadi2.jpg" }
+                ]
+            },
+            friday : {
+                breakfast: [
+                    { name: "Tea", image: "php_img/t4.png" },
+                    { name: "safforan Milk", image: "php_img/sa.jpg" },
+                    { name: "Sandwitch", image: "php_img/b5.jpg" }
+                ],
+                lunch: [
+                    { name: "Chapati", image: "php_img/chapati.jpg" },
+                    { name: "Soya been", image: "php_img/Soya_been.jpg" },
+                    { name: "Dal-Rice", image: "php_img/Dal rice1.jpg" }
+                ],
+                dinner: [
+                    { name: "Bhakari", image: "php_img/d1.jpg" },
+                    { name: "Chikan-65", image: "php_img/Chikan_65.jpg" },
+                    { name: "Rice", image: "php_img/Rice.jpg" }
+                ]
+            },
+            saturday : {
+                breakfast: [
+                    { name: "Coffee", image: "php_img/c3.jpg" },
+                    { name: "Butterscotch Milk", image: "php_img/bu.jpg" },
+                    { name: "Mendu-Vada", image: "php_img/b6.jpg" }
+                ],
+                lunch: [
+                    { name: "Roti", image: "php_img/Roti.jpg" },
+                    { name: "Kaju-Kari", image: "php_img/Kaju_kari.jpg" },
+                    { name: "Dal-Rice", image: "php_img/Dal rice1.jpg" }
+                ],
+                dinner: [
+                    { name: "Capati", image:"php_img/chapati.jpg" },
+                    { name: "Tomato-Chatani", image: "php_img/Tomato_chatni1.jpg" },
+                    { name: "Dal-Khicadi", image: "php_img/Dal_khichadi2.jpg" }
+                ]
+            },
+            sunday : {
+                breakfast: [
+                    { name: "Tea", image: "php_img/t4.png" },
+                    { name: "Almond Milk", image: "php_img/al.jpg" },
+                    { name: "Maggi", image: "php_img/b7.jpg" }
+                ],
+                lunch: [
+                    { name: "veg thali", image: "php_img/Veg_thali1.jpg" },
+                    { name: "Gulab-jamun", image: "php_img/Gulab_jamun1.jpg" },
+                    { name: "Salad", image: "php_img/Salad1.jpg" }
+                ],
+                dinner: [
+                    { name: "Veg-Biryani", image: "php_img/veg_biryani2.jpg" },
+                    { name: "Koshimbir", image: "php_img/Koshimbir 1.jpg" },
+                    { name: "Ladu", image: "php_img/Ladu1.jpg" }
+                ]
+            },
+
+            // Add more days (wednesday, thursday, etc.) with their respective menu items here...
+        };
+    
+        // Function to display the menu based on the selected day
+        function displayMenu(day) {
+            // Hide all sections first
+            document.querySelectorAll('.meal-section').forEach(section => {
+                section.style.display = 'none';
+            });
+    
+            // Set the meal section for the selected day
+            const selectedMenu = dayMenus[day];
+            
+            // Show the corresponding meals for the selected day
+            showMeals("breakfast", selectedMenu.breakfast);
+            showMeals("lunch", selectedMenu.lunch);
+            showMeals("dinner", selectedMenu.dinner);
+        }
+    
+        // Function to display meals for a particular meal type (Breakfast, Lunch, Dinner)
+        function showMeals(mealType, meals) {
+            const section = document.getElementById(mealType);
+            const mealContainer = section.querySelector('.row');
+    
+            // Clear previous meals
+            mealContainer.innerHTML = '';
+    
+            // Add the meals for the selected day
+            meals.forEach(meal => {
+                const mealCard = document.createElement('div');
+                mealCard.classList.add('col-md-4');
+                mealCard.innerHTML = `
+                    <div class="meal-card">
+                        <img src="${meal.image}" alt="${meal.name}">
+                        <h5>${meal.name}</h5>
+                    </div>
+                `;
+                mealContainer.appendChild(mealCard);
+            });
+    
+            // Show the section after adding the meals
+            section.style.display = 'block';
+        }
+    
+        // Event listener for dropdown change
+        document.getElementById('daySelection').addEventListener('change', (event) => {
+            const selectedDay = event.target.value;
+            displayMenu(selectedDay);
+        });
+    
+        // Initial menu display (set default day to Monday)
+        displayMenu('monday');
+
+
+
+
+        document.getElementById("daySelection").addEventListener("change", function () {
+    let selectedDay = this.value;
+    
+    fetch(`fetch_menu.php?day=${selectedDay}`)
+        .then(response => response.json())
+        .then(data => {
+            updateMenuSection("breakfast", data.breakfast || []);
+            updateMenuSection("lunch", data.lunch || []);
+            updateMenuSection("dinner", data.dinner || []);
+        })
+        .catch(error => console.error("Error fetching menu:", error));
+});
+
+function updateMenuSection(mealType, items) {
+    let section = document.getElementById(mealType);
+    
+    if (!section) return;
+    
+    section.innerHTML = `<h3 class="section-title">${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h3>`;
+
+    let mealHTML = `<div class="row justify-content-center">`;
+
+    items.slice(0, 3).forEach(item => {
+        mealHTML += `
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="meal-card">
+                    <img src="${item.image}" alt="${item.name}">
+                    <h5>${item.name}</h5>
+                </div>
+            </div>`;
+    });
+
+    mealHTML += `</div>`; // Close row
+
+    section.innerHTML += mealHTML;
+}
+
+// Trigger change event on page load to show Monday's menu
+document.getElementById("daySelection").dispatchEvent(new Event("change"));
+
+
+
+
+    </script>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Mess Management System. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    
+</body>
+</html>

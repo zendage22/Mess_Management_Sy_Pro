@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us - Mess Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;  /* Smaller brand name */
+            color: #34be65 !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #ff6600 !important;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Menu Styling */
+        .navbar .navbar-nav .nav-link {
+            color: #fff !important;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            background-color: #007bff;
+            border-radius: 30px;
+            color: white !important;
+        }
+
+        .navbar .navbar-nav .nav-link.active {
+            color: #ff6600 !important;
+            font-weight: 600;
+        }
+
+        /* Adding Font Awesome Icons */
+        .navbar .navbar-nav .nav-item i {
+            margin-right: 8px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-item:hover i {
+            transform: scale(1.2);
+            color: #ff6600;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin-top: 80px;
+            padding: 60px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #72ba8e, #76af86);
+            color: #fff;
+        }
+
+        .section-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #f1f1f1;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .about-text ul {
+            list-style-type: square;
+            margin-left: 40px;
+        }
+
+        .about-text ul li {
+            margin-bottom: 10px;
+        }
+
+        .reviews-section {
+            margin-top: 60px;
+        }
+
+        .review-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-card h5 {
+            color: #4B0082;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .review-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer a {
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ff6600;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 30px;
+                width: 90%;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .review-card {
+                padding: 15px;
+            }
+        }
+
+ /* Dropdown Customization */
+ .dropdown-menu {
+            background-color: #343a40;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff;
+            color: #fff !important;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            color: #ff6600;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-item:hover i {
+            color: #fff;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 10px;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-toggle:hover::after {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo and Brand Name -->
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo" style="height: 60px;"> Mess Management
+            </a>
+            <!-- Navbar Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html"><i class="fas fa-utensils"></i>Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.php"><i class="fas fa-concierge-bell"></i>Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i>About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php"><i class="fas fa-phone-alt"></i>Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-sign-in-alt"></i>Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-user"></i> User Login</a></li>
+                            <li><a class="dropdown-item" href="staff_login.php"><i class="fas fa-users-cog"></i> Staff Login</a></li>
+                            <li><a class="dropdown-item" href="admin_login.php"><i class="fas fa-user-shield"></i> Admin Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- About Us Section -->
+    <div class="container">
+        <h2 class="section-title">आमच्याबद्दल</h2>
+        <p class="about-text">
+           <h5> Mess Management System</h5> मध्ये आपले स्वागत आहे! आमचा प्लॅटफॉर्म संस्थां, विद्यापीठां आणि संघटनांसाठी खाद्य सेवा व्यवस्थापित करणे अधिक सोयीस्कर, प्रभावी आणि किफायतशीर बनवण्यासाठी डिझाइन करण्यात आलेला आहे. आम्ही एक व्यापक उपाय प्रदान करतो ज्यामुळे मेस ऑपरेटरांना जेवणाच्या ऑर्डर, वितरण ट्रॅकिंग आणि पेमेंट्स व्यवस्थितपणे हाताळता येतात.
+            <br><br>
+            आमचा उद्देश खाद्य सेवा व्यवस्थापन प्रक्रियेचे सोपे करणे, वापरकर्ता अनुभव सुधारणा करणे आणि मेस हॉल्स अधिक प्रभावीपणे कार्य करू शकतील याची खात्री करणे आहे. सर्व या सेवांना एका प्लॅटफॉर्ममध्ये एकत्र करून, आम्ही वेळ वाचवण्यास आणि ऑपरेशनल खर्च कमी करण्यास मदत करतो. आमच्या प्रणालीचे काही प्रमुख वैशिष्ट्ये आहेत:
+            <ul>
+                <li>रिअल-टाइम जेवणाचे ऑर्डर आणि ट्रॅकिंग</li>
+                <li>स्वयंचलित बिलिंग आणि पेमेंट प्रोसेसिंग</li>
+                <li>कस्टमाईझेबल मेनू निर्माण आणि अद्यतने</li>
+                <li>सांगणीय अहवाल आणि विश्लेषण</li>
+            </ul>
+            <br>
+            आमची दृष्टी म्हणजे खाद्य सेवा व्यवस्थापन प्रणालींमध्ये जागतिक नेत्याचे रूप घेणे आणि नाविन्यपूर्ण, विश्वासार्ह आणि वापरकर्ता-अनुकूल उपाय प्रदान करणे. आम्ही असे साधने प्रदान करण्याचा प्रयत्न करतो जे मेस ऑपरेटरांना त्यांच्या ग्राहकांसाठी सर्वोत्तम जेवण अनुभव प्रदान करण्यास मदत करतात.
+            <br><br>
+            आजच आमच्यात सामील व्हा आणि आपल्या मेस व्यवस्थापन ऑपरेशन्सला रूपांतरित करण्याची पहिली पायरी टाका!
+        </p>
+    </div>
+
+   <!-- Customer Reviews Section -->
+<div class="container reviews-section">
+    <h2 class="section-title">ग्राहक पुनरावलोकने</h2>
+
+    <!-- Carousel for Reviews (Horizontal) -->
+    <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- Review 1 -->
+            <div class="carousel-item active">
+                <div class="review-card">
+                    <h5>गौरी जाधव</h5>
+                    <p>"Mess Management System ने आमच्या डायनिंग सेवांचे संचालन खूप सोपे केले आहे. हे वापरण्यास सोपे आहे, समजण्यास सोपे आहे, आणि अनेक कार्ये आपोआप करतो जे आम्ही आधी मॅन्युअली करत होतो. खूप शिफारस करतो!"</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="carousel-item">
+                <div class="review-card">
+                    <h5>अजय शेख</h5>
+                    <p>"आम्ही या प्रणालीचा उपयोग काही महिन्यांपासून करत आहोत, आणि हे आमच्या मेस ऑपरेशन्सची कार्यक्षमता सुधारण्यात मदत करत आहे. स्वयंचलित बिलिंग आणि मेनू अद्यतने खूप फायदेशीर ठरली!"</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="carousel-item">
+                <div class="review-card">
+                    <h5>संजय पाटील</h5>
+                    <p>"मोठ्या संस्थेच्या मेस हॉलचे व्यवस्थापन खूप आव्हानात्मक असू शकते, पण ही प्रणाली सर्वकाही सुगम बनवते. रिअल-टाइम अद्यतने आणि अहवाल खूप उपयुक्त आहेत. उत्कृष्ट सेवा!"</p>
+                </div>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="carousel-item">
+                <div class="review-card">
+                    <h5>पूजा झेंडगे</h5>
+                    <p>"या प्रणालीचे सर्वात आवडते गोष्ट म्हणजे ते किती सोपे आहे. लेआउट स्वच्छ आहे, आणि वैशिष्ट्ये खूप व्यावहारिक आहेत. मी वापरलेली सर्वोत्तम मेस व्यवस्थापन साधन!"</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Mess Management System. सर्व हक्क राखीव आहेत.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

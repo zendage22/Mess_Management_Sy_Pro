@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+.list-group-item {
+    font-size: 1.1rem;
+}
+
+.scrolling-container {
+    max-height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+button {
+    transition: background-color 0.3s;
+}
+
+/* For the scrollable content */
+.scrollable {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+}

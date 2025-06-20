@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mess Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url("php_img/registration1.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;  /* Smaller brand name */
+            color: #34be65 !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #ff6600 !important;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Menu Styling */
+        .navbar .navbar-nav .nav-link {
+            color: #fff !important;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            background-color: #007bff;
+            border-radius: 30px;
+            color: white !important;
+        }
+
+        .navbar .navbar-nav .nav-link.active {
+            color: #ff6600 !important;
+            font-weight: 600;
+        }
+
+        /* Adding Font Awesome Icons */
+        .navbar .navbar-nav .nav-item i {
+            margin-right: 8px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-item:hover i {
+            transform: scale(1.2);
+            color: #ff6600;
+        }
+
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h4 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #4B0082;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            height: 45px;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #2F4F4F;
+            border-color: #2F4F4F;
+            color: white;
+            border-radius: 30px;
+        }
+
+        .btn-primary:hover {
+            background-color: #9a95f5;
+            border-color: #555555;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer a {
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ff6600;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ff6600;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            .card {
+                width: 90%;
+                padding: 25px;
+            }
+        }
+
+        .dropdown-menu {
+            background-color: #343a40;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            color: #fff !important;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff;
+            color: #fff !important;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            color: #ff6600;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-item:hover i {
+            color: #fff;
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 10px;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .dropdown-toggle:hover::after {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo and Brand Name -->
+            <a class="navbar-brand" href="#">
+                <img src="logo.png"s alt="Logo" style="height: 60px;"> Mess Management
+            </a>
+            <!-- Navbar Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html"><i class="fas fa-utensils"></i>Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ser.html"><i class="fas fa-concierge-bell"></i>Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i>About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php"><i class="fas fa-phone-alt"></i>Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-sign-in-alt"></i>Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-user"></i> User Login</a></li>
+                            <li><a class="dropdown-item" href="staff_login.php"><i class="fas fa-users-cog"></i> Staff Login</a></li>
+                            <li><a class="dropdown-item" href="admin_login.php"><i class="fas fa-user-shield"></i> Admin Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card">
+            <h4>Registration Form</h4>
+            <form action="register.php" method="POST" id="registrationForm">
+                <div class="mb-3">
+                    <label for="user_id" class="form-label">User ID</label>
+                    <input type="number" class="form-control" id="user_id" name="user_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fname" class="form-label"> Full Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" pattern="[A-Za-z]+" title="Last name should only contain letters" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+               <!--- <div class="mb-3">
+                    <label for="password" class="form-label">Password </label>
+                    <input type="password" class="form-control" id="password" name="password" pattern="\d{6}" title="Password must be exactly 6 digits" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                </div>-->
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" pattern=".{8,}" title="Password must be at least 8 characters long" required>
+                        <span class="input-group-text" onclick="togglePassword('password', 'togglePasswordIcon')">
+                            <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        <span class="input-group-text" onclick="togglePassword('confirmPassword', 'toggleConfirmPasswordIcon')">
+                            <i class="fas fa-eye" id="toggleConfirmPasswordIcon"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Register</button>
+                
+                <script>
+                function togglePassword(fieldId, iconId) {
+    const passwordField = document.getElementById(fieldId);
+    const icon = document.getElementById(iconId);
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        passwordField.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+                
+                document.getElementById('registrationForm').onsubmit = function(e) {
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                    // Ensure password meets criteria
+                    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                    if (!passwordPattern.test(password)) {
+                        alert("Password must be at least 8 characters long and include a letter, a number, and a special character.");
+                        e.preventDefault();
+                        return;
+                    }
+                
+                    // Confirm Password Validation
+                    if (password !== confirmPassword) {
+                        alert("Passwords do not match!");
+                        e.preventDefault();
+                    }
+                };
+                </script>
+                
+                
+
+
+
+                
+            </form>
+
+            <!-- Login Link -->
+            <div class="login-link">
+                <p>Already have an account? <a href="index.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Mess Management System. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registrationForm').onsubmit = function(e) {
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+    
+            // Name validation (only letters)
+            const namePattern = /^[A-Za-z]+$/;
+            if (!namePattern.test(fname)) {
+                alert("First name should only contain letters.");
+                e.preventDefault();
+                return;
+            }
+            if (!namePattern.test(lname)) {
+                alert("Last name should only contain letters.");
+                e.preventDefault();
+                return;
+            }
+    
+            // Password validation (at least 8 characters, must contain letters, numbers, and special characters)
+            function togglePassword(fieldId, iconId) {
+        const passwordField = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+
+    document.getElementById('registrationForm').onsubmit = function(e) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Password pattern: At least 8 characters, one letter, one number, one special character
+        const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordPattern.test(password)) {
+            alert("Password must be at least 8 characters long, with at least one letter, one number, and one special character.");
+            e.preventDefault();
+            return;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            e.preventDefault();
+        }
+    };
+        }
+    </script>
+    
+
+</body>
+</html>
